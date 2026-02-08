@@ -29,4 +29,10 @@ class StudentController extends Controller
 
         return redirect()->back()->with('success', 'Student added successfully!');
     }
+
+    public function show($id)
+    {
+        $student = Student::findOrFail($id);
+        return inertia('StudentDetails', ['student' => $student]);
+    }
 }
